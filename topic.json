@@ -1,0 +1,13 @@
+{
+ "topic": "Self-healing production systems",
+ "question": "How do teams make a web product (edge functions, API, workflow engine, database) self-healing: health checks, synthetic monitoring, retries with backoff, circuit breakers, automatic rollback, canary deploys, auto-generated fix pull requests that a human approves \u00e2\u20ac\u201d concrete patterns and open-source tools?",
+ "queries": [
+  "self healing kubernetes",
+  "synthetic monitoring open source",
+  "circuit breaker library",
+  "automatic rollback deployment"
+ ],
+ "urls": [
+  "https://sre.google/sre-book/monitoring-distributed-systems/"
+ ]
+}
