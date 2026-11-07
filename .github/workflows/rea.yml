@@ -1,11 +1,12 @@
 # REA (Reverse Engineer Anything, morluto/rea, MIT; npm rea-agents pinned) static breakdown of an OPEN-SOURCE automation
-# dashboard front end. No AI keys, no secrets: REA's analyze-javascript-application is static analysis. Output: rea/REPORT.md.
+# dashboard front end. No AI keys, no secrets: REA's analyze-javascript-application is static analysis. Output: rea/${{ inputs.out }}.md.
 name: rea
 on:
   workflow_dispatch:
     inputs:
       repo: {description: "owner/name of the open-source target", required: true}
       path: {description: "front-end folder inside it", required: true}
+      out: {description: "report name", required: true}
 permissions: {contents: write}
 jobs:
   rea:
@@ -28,8 +29,8 @@ jobs:
           { echo "# REA breakdown: ${{ inputs.repo }} / ${{ inputs.path }}"; echo; echo "Tool: rea-agents@6.5.0 (morluto/rea, MIT), static analysis, $(date -u +%F)."; echo;
             echo "## Routes / pages found"; grep -rhoE "path: *['\"][^'\"]+['\"]" /tmp/target/${{ inputs.path }} --include=*.ts --include=*.tsx --include=*.vue 2>/dev/null | sort -u | head -150;
             echo; echo "## Settings / billing / api-key / usage files"; find /tmp/target/${{ inputs.path }} -type f \( -iname '*setting*' -o -iname '*billing*' -o -iname '*api*key*' -o -iname '*usage*' -o -iname '*plan*' -o -iname '*member*' -o -iname '*template*' \) | sed 's#/tmp/target/##' | head -150;
-            echo; echo "## REA output (trimmed)"; head -c 200000 rea/REA_raw.md; } > rea/REPORT.md
-          rm -f rea/REA_raw.md; wc -c rea/REPORT.md; tail -3 rea/rea.err || true
+            echo; echo "## REA output (trimmed)"; head -c 200000 rea/REA_raw.md; } > rea/${{ inputs.out }}.md
+          rm -f rea/REA_raw.md; wc -c rea/${{ inputs.out }}.md; tail -3 rea/rea.err || true
       - name: save
         run: |
           git config user.name github-actions; git config user.email github-actions@users.noreply.github.com
