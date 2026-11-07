@@ -1,0 +1,12 @@
+{
+ "topic": "Google Vertex AI Agent Builder console reverse-engineering",
+ "question": "From Google Cloud public docs: Vertex AI Agent Builder / Agent Engine console structure (agents list, sessions, tools, data stores, evaluation, monitoring, quotas, billing, IAM roles, service accounts vs API keys, key restrictions). What a SaaS automation dashboard should copy.",
+ "queries": [
+  "vertex ai agent builder",
+  "google cloud api key restrictions"
+ ],
+ "urls": [
+  "https://cloud.google.com/vertex-ai/generative-ai/docs/agent-builder/overview",
+  "https://cloud.google.com/docs/authentication/api-keys"
+ ]
+}
